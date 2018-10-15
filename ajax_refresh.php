@@ -20,6 +20,10 @@ function connect() {
     return new PDO($server, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 }
 
+// function connect() {
+//     return new PDO('mysql:host=localhost;dbname=test;port=8889', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+// }
+
 $pdo = connect();
 $keyword = $_POST['keyword'].'%';
 $sql = "SELECT * FROM output WHERE starting_phrase LIKE (:keyword) ORDER BY count DESC LIMIT 0, 10";
