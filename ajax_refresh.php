@@ -2,6 +2,7 @@
 
 function connect() {
 	$url = getenv('CLEARDB_DATABASE_URL');
+
 	$str = substr("$url", 8);
 
 	$user = explode(":", $str)[0];
