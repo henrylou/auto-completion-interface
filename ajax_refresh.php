@@ -2,6 +2,7 @@
 
 function connect() {
 	$url = getenv('CLEARDB_DATABASE_URL');
+
 	$str = substr("$url", 8);
 
 	$user = explode(":", $str)[0];
@@ -18,6 +19,10 @@ function connect() {
 	$server = "mysql:host=".$host.";dbname=".$db;
     return new PDO($server, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 }
+
+// function connect() {
+//     return new PDO('mysql:host=localhost;dbname=test;port=8889', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+// }
 
 $pdo = connect();
 $keyword = $_POST['keyword'].'%';
